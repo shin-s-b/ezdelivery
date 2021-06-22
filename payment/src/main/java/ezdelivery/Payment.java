@@ -24,7 +24,6 @@ public class Payment {
     private Long orderNumber; //주문건수
     private String guestName; //고객명
 
-
     /*
     
     @PostLoad: 해당 엔티티를 새로 불러오거나 refresh 한 이후.
@@ -35,18 +34,17 @@ public class Payment {
     @PreRemove: 해당 엔티티를 삭제하기 이전
     @PostRemove: 해당 엔티티를 삭제한 이후
     */
-
     @PostPersist
     public void onPostPersist(){
         
-        
+       
         PayApproved payApproved = new PayApproved();
         BeanUtils.copyProperties(this, payApproved);
         payApproved.setStatus("결재승인");
         payApproved.publishAfterCommit();
 
         // 시간 끌기
-        /*
+       /*
         try {
             
             System.out.println("\n\n !!!!!!!!!!!!!!! PAYMENT SYSTEM BREAKING !!!!!!!!!!!!!!!!!!!!! \n\n");
@@ -55,7 +53,7 @@ public class Payment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        */
+       */
         
         System.out.println("\n\n !!!!!!!!!!!!!!! PAYMENT COMPLETED !!!!!!!!!!!!!!!!!!!!! \n\n");
 
@@ -76,7 +74,7 @@ public class Payment {
         System.out.println("======================================================================================");
     }
 
-            
+           
     //해당 엔티티를 삭제한 이후
     @PostRemove
     public void onPostRemove(){
