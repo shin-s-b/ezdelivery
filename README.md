@@ -111,20 +111,19 @@
 
 ### 모델링
 
-![최종소스기반모델링](https://user-images.githubusercontent.com/84304227/122336179-635c8e00-cf77-11eb-9b4b-98c6b672c650.PNG)
+![최종소스기반모델링](https://github.com/shin-s-b/ezdelivery_asis/blob/master/review.png?raw=true)
 
 # 구현:
 
-분석/설계 단계에서 도출된 헥사고날 아키텍처에 따라, 각 BC별로 대변되는 마이크로 서비스들을 스프링부트와 파이선으로 구현하였다. 구현한 각 서비스를 로컬에서 실행하는 방법은 아래와 같다 (각자의 포트넘버는 8081 ~ 808n 이다)
+분석/설계/모델링 단계에서 도출된 아키텍처에 따라, 각 마이크로 서비스들을 스프링부트와 파이선으로 구현 후 서비스를 올렸다.
 
 ```
 cd ../payment, order, delivery, store, mypage
 mvn package
 ```
 
-## CQRS
-CQRS는 Command and Query Responsibility Segregation(명령과 조회의 책임 분리)을 나타냅니다.
-리뷰 및 주문/결재/배달 등  Status 에 대하여 점주 및 고객이 조회 할 수 있도록 CQRS 로 구현하였다.
+## CQRS패턴 구현
+팀 과제에서 구현했던 order , delivery, payment 에 mypage review 를 추가하여 주문/결재/배달 등  Status 에 대하여 점주 및 고객이 조회하고 고객이 리뷰 할 수 있도록 CQRS로 구현하였다.
 ```
 @Service
 public class MypageViewHandler {
